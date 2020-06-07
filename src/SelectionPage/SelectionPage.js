@@ -92,13 +92,15 @@ class SelectionPage extends Component {
           <div className='SelectNameRecord__error' role='alert'>
             {error && <p>{error.message}</p>}
           </div>
+          <div class="buttons">
             <h3>Please select the prefered gender of your name</h3>
-              <button onClick = {this.handleChangeGenderMale}>Male</button>
-              <button onClick = {this.handleChangeGenderFemale}>Female</button>
-              <button onClick = {this.handleChangeGenderNonBinary}>Both/NonBinary</button>
+              <button className="fill" onClick = {this.handleChangeGenderMale}>Male</button>
+              <button className="pulse" onClick = {this.handleChangeGenderFemale}>Female</button>
+              <button className="close" onClick = {this.handleChangeGenderNonBinary}>Both/NonBinary</button>
             <h3>Please select whether you prefer a name that is more Classic or Modern</h3>
-              <button onClick = {this.handleChangeEraClassic}>Classic</button>
-              <button onClick = {this.handleChangeEraModern}>Modern</button>
+              <button className="raise" onClick = {this.handleChangeEraClassic}>Classic</button>
+              <button className="up" onClick = {this.handleChangeEraModern}>Modern</button>
+          </div>
             <br></br>
           <Link to={'/namePresentation'}>
             Find My Name

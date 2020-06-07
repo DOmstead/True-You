@@ -1,0 +1,69 @@
+$swipe-fill-border-width: 2px;
+$swipe-fill-border-color: black;
+$sec-swipe-fill-border-color: black;
+$swipe-fill-button-padding: 16px 28px;
+$swipe-fill-text-color: black;
+$sec-swipe-fill-text-color: white;
+$swipe-fill-border-radius: 0px;
+$swipe-fill-background: white;
+$sec-swipe-fill-background: #666;
+$swipe-fill-transition-time: 0.25s;
+
+.swipe-fill {
+  display: inline-block;
+  padding: $swipe-fill-button-padding;
+  border: $swipe-fill-border-width $swipe-fill-border-color solid;
+  text-align: center;
+  text-decoration: none;
+  color: $swipe-fill-text-color;
+  background: $swipe-fill-background;
+  position: relative;
+  overflow: hidden;
+  transition: color $swipe-fill-transition-time ease-in-out,  border-color $swipe-fill-transition-time ease-in-out;
+  z-index: 1;
+  border-radius: $swipe-fill-border-radius;
+  
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: $sec-swipe-fill-background;
+    transition: transform $swipe-fill-transition-time ease-in-out;
+    z-index: -1;
+  }
+  
+  &--up {
+    &:before {
+      transform: translate3d(0, 100%, 0);
+    }
+  }
+  
+  &--down {
+    &:before {
+      transform: translate3d(0, -100%, 0);
+    }
+  }
+  
+  &--left {
+    &:before {
+      transform: translate3d(-100%, 0, 0);
+    }
+  }
+  
+  &--right {
+    &:before {
+      transform: translate3d(100%, 0, 0);
+    }
+  }
+  
+  &:hover {
+    color: $sec-swipe-fill-text-color;
+    border: $swipe-fill-border-width $sec-swipe-fill-border-color solid;
+    &:before {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+}
