@@ -2,6 +2,8 @@
 //in our code for security.
 
 export default {
-  API_ENDPOINT: `http://localhost:8800/api/namerecords`,
+  //This is the API Point for local development prior to production.
+  // API_ENDPOINT: `http://localhost:8800/api/namerecords`,
+  API_ENDPOINT: `https://floating-basin-86683.herokuapp.com/api/namerecords`,
   API_KEY: process.env.REACT_APP_API_KEY,
 }

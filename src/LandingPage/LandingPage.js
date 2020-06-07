@@ -24,7 +24,7 @@ render() {
               <p>Sometimes that change means finding a new name</p>
               <p>TRUE YOU. Find yourself. Find Your Name.</p>
           </div>
-          <Link to={'/selectionPage'}>
+          <Link className= 'LandingToSelection' to={'/selectionPage'}>
             Get Started
           </Link>
       </section>

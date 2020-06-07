@@ -89,30 +89,30 @@ class App extends Component {
   }
 
 
-  //This fetch call is made to populate nameRecords when the server is live. 
-  //For this version of the app it is not used, but is left in place so you can 
-  //better see how the app will function.
+  //This fetch call is made to populate nameRecords from our API. This occurs as soon as the app 
+  //mounts, so that when the user reaches the point in their userflow when their name would be displayed,
+  // the data is ready to present. This helps create a positive experience for the user. 
 
-  // componentDidMount() {
-  //   fetch(config.API_ENDPOINT, {
-  //     method: 'GET',
-  //     headers: {
-  //       'content-type': 'application/json',
-  //       'Authorization': `Bearer ${config.API_KEY}`
-  //     }
-  //   })
-  //     .then(res => {
-  //       if (!res.ok) {
-  //         return res.json().then(error => Promise.reject(error))
-  //       }
-  //       return res.json()
-  //     })
-  //     .then(this.setNameRecords)
-  //     .catch(error => {
-  //       console.error(error)
-  //       this.setState({ error })
-  //     })
-  // }
+  componentDidMount() {
+    fetch(config.API_ENDPOINT, {
+      method: 'GET',
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': `Bearer ${config.API_KEY}`
+      }
+    })
+      .then(res => {
+        if (!res.ok) {
+          return res.json().then(error => Promise.reject(error))
+        }
+        return res.json()
+      })
+      .then(this.setNameRecords)
+      .catch(error => {
+        console.error(error)
+        this.setState({ error })
+      })
+  }
 
   updateNameRecord = updatedNameRecord => {
     this.setState({
@@ -145,6 +145,7 @@ class App extends Component {
       <main className='App'>
         <NameRecordsContext.Provider value={contextValue}>
           <Nav />
+          <br></br>
           <div className='content' aria-live='polite'>
           <Route
               exact
