@@ -17,27 +17,10 @@ import './App.css';
 //in keeping with industry best practices. 
 class App extends Component {
 
-  //This establishes the base state of the app. The namerecords below are only the standalone
-  //version and will be populated by the api call commented out below in production once
-  //the server is setup.
+
 
   state = {
-    nameRecords: [{"name": "Oakley","gender":"B", "era":"Modern" },
-    {"name": "Frank","gender":"M", "era":"Modern" },
-    {"name": "John","gender":"M", "era":"Modern" },
-    {"name": "Sarah","gender":"F", "era":"Modern" },
-    {"name": "Sam","gender":"B", "era":"Modern" },
-    {"name": "Justice","gender":"B", "era":"Classic" },
-    {"name": "Royal","gender":"B", "era":"Classic" },
-    {"name": "Ethel","gender":"F", "era":"Classic" },
-    {"name": "William","gender":"M", "era":"Classic" },
-    {"name": "James","gender":"M", "era":"Classic" },
-    {"name": "Logan","gender":"M", "era":"Modern" },
-    {"name": "Emma","gender":"F", "era":"Modern" },
-    {"name": "Olivia","gender":"F", "era":"Classic" },
-    {"name": "Skyler","gender":"B", "era":"Modern" },
-    {"name": "Justice","gender":"B", "era":"Classic" }
-  ],
+    nameRecords: [],
     gender: "M",
     era: "Classic",
     error: null,

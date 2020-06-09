@@ -66,18 +66,18 @@ class NamePresentation extends Component {
             <h3>{this.state.selectedNames[namePositionToDisplay]}</h3>
             <p>Make You Feel?</p>
         </div>
-        <div>
-        <Link to={'/tips'}>
-          I Love It! Give me some tips to make it mine!
-        </Link>
-        </div>
-        <div>
-        <button type='button' onClick={this.changeNamePositionToDisplay}>
-            Not for Me
+        <div className= 'optionContainer'>
+        <button className= 'moreNames' type='button' onClick={this.changeNamePositionToDisplay}>
+            Let's Try Again
         </button>
         </div>
-        <div>
-        <Link to={'/selectionPage'}>
+        <div className= 'optionContainer'>
+        <Link className='linkToTips' to={'/tips'}>
+          I Love It! Give Me Tips!
+        </Link>
+        </div>
+        <div className= 'optionContainer'>
+        <Link className= 'backToSelection' to={'/selectionPage'}>
           Want to change your choices? Click here to go back to the option selection page
         </Link>
         </div>
