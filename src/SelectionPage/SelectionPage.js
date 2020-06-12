@@ -62,26 +62,32 @@ class SelectionPage extends Component {
 
   handleChangeGenderMale = () => {
     this.setState({gender: "M"})
+    localStorage.setItem('gender', "M")
   };
 
   handleChangeGenderFemale = () => {
     this.setState({gender: "F"})
+    localStorage.setItem('gender', "F")
   };
 
   handleChangeGenderNonBinary = () => {
     this.setState({gender: "B"})
+    localStorage.setItem('gender', "B")
   };
 
   handleChangeEra = value => {
     this.setState({ era: value })
+    localStorage.setItem('era', value)
   };
 
   handleChangeEraClassic = () => {
     this.setState({ era: "Classic" })
+    localStorage.setItem('era', "Classic")
   };
 
   handleChangeEraModern = () => {
     this.setState({ era: "Modern" })
+    localStorage.setItem('era', "Modern")
   };
 
 

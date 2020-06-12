@@ -20,12 +20,12 @@ class App extends Component {
 
 
   state = {
-    nameRecords: [],
-    gender: "M",
-    era: "Classic",
+    nameRecords: [] || localStorage.getItem('nameRecords'),
+    gender: localStorage.getItem('gender') || "",
+    era: localStorage.getItem('era') || "",
     error: null,
     recent: [],
-    nameChosen: ""
+    nameChosen: "" || localStorage.getItem('nameChosen')
   };
 
 
@@ -36,6 +36,7 @@ class App extends Component {
       nameRecords: nameRecords,
       error: null,
     })
+    localStorage.setItem('nameRecords', JSON.stringify(nameRecords))
   }
 
   setEra = newEra => {
@@ -54,6 +55,7 @@ class App extends Component {
     this.setState({
       nameChosen: nameChosen,
     })
+    localStorage.setItem('nameChosen', nameChosen)
   }
 
   addNameRecord = nameRecord => {
@@ -111,7 +113,7 @@ class App extends Component {
   //for the app, showing what components render on what areas. 
   render() {
     const contextValue = {
-      nameRecords: this.state.nameRecords,
+      nameRecords: this.state.nameRecords || localStorage.getItem('nameRecords'),
       gender:this.state.gender,
       era:this.state.era,
       recent:this.state.recent,

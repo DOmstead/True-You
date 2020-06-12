@@ -17,9 +17,9 @@ class NamePresentation extends Component {
     gender: this.context.gender,
     era: this.context.era,
     recent: this.context.recent,
-    selectedName: '',
-    selectedNames: '',
-    namePositionToDisplay: 0
+    selectedName: '' || localStorage.getItem('selectedName'),
+    selectedNames: '' || localStorage.getItem('selectedNames'),
+    namePositionToDisplay: parseInt(localStorage.getItem('namePositionToDisplay')) || 0
   };
 
   //This calls the main function of this component when it mounts.
@@ -31,17 +31,18 @@ class NamePresentation extends Component {
   //made by the user. It then updates the state held by this component, as well as 
   //updates the context, which is used by the greater app as a whole. 
   nameSelector = () => {
-    let newNames = [];
-    for(let i=0; i < this.context.nameRecords.length; i++){
-      let record = this.context.nameRecords[i];
-        if(this.state.gender === record.gender && this.state.era === record.era/* and not recent */){ 
-          newNames.push(record.name);
+    let newNames = []
+    let nameRecords = JSON.parse(localStorage.getItem('nameRecords'));
+        for(let i=0; i < nameRecords.length; i++){
+        let record = nameRecords[i];
+          if(this.state.gender === record.gender && this.state.era === record.era){ 
+            newNames.push(record.name);
+          }
         }
-      }
-    this.setState({selectedNames: newNames})
-    this.setState({selectedName: newNames[0]})
-    this.context.setNameChosen(this.state.selectedName)
-    console.log(this.state.selectedName) 
+        this.setState({selectedNames: newNames})
+        localStorage.setItem('selectedNames', newNames)
+        this.setState({selectedName: newNames[0]})
+        this.context.setNameChosen(newNames[this.state.namePositionToDisplay])
   } 
 
   //This function changes what name is displayed to the user as they cycle through the requests.
@@ -49,21 +50,24 @@ class NamePresentation extends Component {
     if(this.state.namePositionToDisplay < this.state.selectedNames.length - 1){
       this.setState({namePositionToDisplay: this.state.namePositionToDisplay + 1})
       this.context.setNameChosen(this.state.selectedNames[this.state.namePositionToDisplay + 1])
+      localStorage.setItem('namePositionToDisplay', this.state.namePositionToDisplay + 1)
     }
     else{
       this.setState({namePositionToDisplay: 0})
       this.context.setNameChosen(this.state.selectedNames[0])
+      localStorage.setItem('namePositionToDisplay', 0)
     }
   }
     
   //This section renders the end user interface for this component.  
   render() {
       const {namePositionToDisplay} = this.state
+      const displayName = this.state.selectedNames[namePositionToDisplay] || 'Taylor'
       return (
           <section className='NamePresentation'> 
         <div>
             <h2>How Does</h2>
-            <h3>{this.state.selectedNames[namePositionToDisplay]}</h3>
+            <h3>{displayName}</h3>
             <p>Make You Feel?</p>
         </div>
         <div className= 'optionContainer'>
