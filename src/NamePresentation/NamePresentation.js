@@ -18,7 +18,7 @@ class NamePresentation extends Component {
     era: this.context.era,
     recent: this.context.recent,
     selectedName: '' || localStorage.getItem('selectedName'),
-    selectedNames: '' || localStorage.getItem('selectedNames'),
+    selectedNames: [] || localStorage.getItem('selectedNames'),
     namePositionToDisplay: parseInt(localStorage.getItem('namePositionToDisplay')) || 0
   };
 
