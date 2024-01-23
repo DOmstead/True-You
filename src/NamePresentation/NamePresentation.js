@@ -31,7 +31,8 @@ class NamePresentation extends Component {
   //made by the user. It then updates the state held by this component, as well as 
   //updates the context, which is used by the greater app as a whole. 
   nameSelector = () => {
-    let newNames = []
+    let newNames = [];
+    console.log('JSON is ' + JSON);
     let nameRecords = JSON.parse(localStorage.getItem('nameRecords'));
         for(let i=0; i < nameRecords.length; i++){
         let record = nameRecords[i];
